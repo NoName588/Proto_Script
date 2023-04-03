@@ -8,6 +8,13 @@ namespace ScriptingAdvanceProject
 {
     class ObjectP
     {
-        public int powerLvl = 0;
+        
+        public int powerLvl;
+
+        public int PowerLevel
+        {
+            get { return powerLvl; }
+            set { powerLvl = value; }
+        }
     }
 }
