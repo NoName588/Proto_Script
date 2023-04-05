@@ -5,14 +5,14 @@ using UnityEngine;
 public class SpaceShip : MonoBehaviour
 {
     //Se puede cambiar luego en GameObject
-    PlayerP player = new PlayerP();
-    EnemyP enemy = new EnemyP();
-    ObjectP objectP = new ObjectP();
-
+     public PlayerP player = new PlayerP();
+     public  EnemyP enemy = new EnemyP();
+     public ObjectP objectP = new ObjectP();
+        
     //Se puede cambiar luego en GameObject
-    PlayerP[,] playerPosition;
-    EnemyP[,] enemyPosition;
-    ObjectP[,] objectPosition;
+    public PlayerP[,] playerPosition;
+    public EnemyP[,] enemyPosition;
+    public ObjectP[,] objectPosition;
 
     private int[,] size;
     private int widht;
