@@ -1,5 +1,5 @@
 # Proto_Script
-//*TowerAmongus*
+/*TowerAmongus*/
 
 
 -Sebastian Franco.
