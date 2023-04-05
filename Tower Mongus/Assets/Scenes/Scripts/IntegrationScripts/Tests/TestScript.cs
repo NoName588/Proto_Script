@@ -46,7 +46,10 @@ public class TestScript
         spaceShip.enemyPosition[0, 0] = enemy;
 
         // Assert
-        Assert.AreEqual(enemy, spaceShip.enemyPosition[0, 0]);
+        Assert.AreEqual(enemy, spaceShip.enemy);
+        Assert.IsInstanceOf(typeof(EnemyP), enemy);
+        Assert.NotNull(spaceShip.enemyPosition[0, 0]);
+
     }
 
 
