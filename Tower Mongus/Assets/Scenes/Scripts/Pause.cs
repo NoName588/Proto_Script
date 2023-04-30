@@ -1,25 +1,43 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Pause : MonoBehaviour
 {
-    
-    private bool isPaused = false;
+
+    [SerializeField] private GameObject buttonPause;
+    [SerializeField] private GameObject menuPause;
+
+    public void Start()
+    {
+        Time.timeScale = 1;
+        buttonPause.SetActive(true);
+        menuPause.SetActive(false);
+    }
 
     public void PauseGame()
     {
-        if (!isPaused)
-        {
-            Time.timeScale = 0;
-            
-            isPaused = true;
-        }
-        else
-        {
-            Time.timeScale = 1;
-            
-            isPaused = false;
-        }
+        Time.timeScale = 0;
+        buttonPause.SetActive(false);
+        menuPause.SetActive(true);
+    }
+
+    public void Continue()
+    {
+        Time.timeScale = 1;
+        buttonPause.SetActive(true);
+        menuPause.SetActive(false);
+    }
+    public void Resetion()
+    {
+        Time.timeScale = 1;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void Menudo(string SampleScene)
+    {
+        SceneManager.LoadScene(SampleScene);
+
     }
 }
 
