@@ -2,32 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerP : Character
+public class CharacteP : MonoBehaviour
 {
-    ObjectP objectP = new ObjectP();
-    EnemyP enemyP;
-    
+    public int live = 1;
+    public int powerLvl = 0;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        AddObject();
+        IsAlive();
     }
 
-    public void AddObject()
+    private bool IsAlive()
     {
-        PowerLvl += objectP.PowerLvl;
-    }
-
-    public bool CompareLvl()
-    {
-        if(PowerLvl >= enemyP.PowerLvl)
+        if (live == 1)
         {
             return true;
         }

@@ -1546,6 +1546,7 @@ GameObject:
   - component: {fileID: 2012719127}
   - component: {fileID: 2012719129}
   - component: {fileID: 2012719130}
+  - component: {fileID: 2012719131}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1645,6 +1646,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 4.48, y: 3.02, z: 0.2}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2012719131
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2012719126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5886a70ed3ab7824d80ad551a4ad0608, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  live: 1
+  powerLvl: 5
 --- !u!1 &2035641878
 GameObject:
   m_ObjectHideFlags: 0
@@ -1656,6 +1671,7 @@ GameObject:
   - component: {fileID: 2035641880}
   - component: {fileID: 2035641879}
   - component: {fileID: 2035641881}
+  - component: {fileID: 2035641882}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -1743,6 +1759,68 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 4.48, y: 3.02, z: 0.2}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2035641882
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2035641878}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08ecf2d3914f6b94d87657180da6234b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  live: 1
+  powerLvl: 6
+  playerGmObjct: {fileID: 2012719126}
+--- !u!1 &2045273933
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2045273935}
+  - component: {fileID: 2045273934}
+  m_Layer: 0
+  m_Name: GridMovement
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2045273934
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2045273933}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b028235d8a71cdf4c89dac476b80f8bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sprite: {fileID: 7482667652216324306, guid: 068e27cde43405147a45da6e8cb08d85, type: 3}
+  playerT: {fileID: 2012719126}
+  enemyT: {fileID: 2035641878}
+--- !u!4 &2045273935
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2045273933}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.086981356, y: -0.50056076, z: 0.020378685}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2099281715
 GameObject:
   m_ObjectHideFlags: 0
