@@ -19,6 +19,10 @@ public class SpaceMovementGrid : MonoBehaviour
     public Enemy[,] enemyPosition;
     public ObjectBonus[,] objectPosition;
 
+    public int[,] playerPositionActive;
+    public int[,] enemyPositionActive;
+    public int[,] objectPositionActive;
+
     public int[,] size;
     private int widht;
     private int height;

@@ -13,31 +13,74 @@ public class Player : CharacteP
     private int height;
     private int columns;
     private int rows;
+    private int actualPositionX;
+    private int actualPositionY;
 
     private SpaceMovementGrid gridMovement;
     public GameObject spaceMovement;
-
+    //private Rigidbody2D rb;
+    
+    //private Vector3 movementDirection;
 
     // Start is called before the first frame update
     void Start()
     {
+        //rb = GetComponent<Rigidbody2D>();
         gridMovement = spaceMovement.GetComponent<SpaceMovementGrid>();
         SetUpGridMovement();
-    }
+        StartPosition();
 
-    private void FixedUpdate()
-    {
-        if (Input.GetKeyDown(KeyCode.D))
-        {
-
-        }
+        actualPositionX = startPositionX;
+        actualPositionY = startPositionY;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.D))    
+        {
+            gridMovement.playerPositionActive[actualPositionX, actualPositionY] = 0;
+            gridMovement.playerPosition[actualPositionX, actualPositionY] = null;
+            gameObject.transform.position = new Vector3((actualPositionX + 1) - (widht - 0.5f), actualPositionY - (height - 0.5f));
+            actualPositionX += 1;
+            gridMovement.playerPositionActive[actualPositionX, actualPositionY] = 1;
+            gridMovement.playerPosition[actualPositionX, actualPositionY] = this;
+        }
+        else if (Input.GetKeyDown(KeyCode.W))
+        {
+            gridMovement.playerPositionActive[actualPositionX, actualPositionY] = 0;
+            gridMovement.playerPosition[actualPositionX, actualPositionY] = null;
+            gameObject.transform.position = new Vector3(actualPositionX - (widht - 0.5f), (actualPositionY + 1) - (height - 0.5f));
+            actualPositionY += 1;
+            gridMovement.playerPositionActive[actualPositionX, actualPositionY] = 1;
+            gridMovement.playerPosition[actualPositionX, actualPositionY] = this;
+        }
+        else if (Input.GetKeyDown(KeyCode.A))
+        {
+            gridMovement.playerPositionActive[actualPositionX, actualPositionY] = 0;
+            gridMovement.playerPosition[actualPositionX, actualPositionY] = null;
+            gameObject.transform.position = new Vector3((actualPositionX - 1) - (widht - 0.5f), actualPositionY - (height - 0.5f));
+            actualPositionX -= 1;
+            gridMovement.playerPositionActive[actualPositionX, actualPositionY] = 1;
+            gridMovement.playerPosition[actualPositionX, actualPositionY] = this;
+        }
+        else if (Input.GetKeyDown(KeyCode.S))
+        {
+            gridMovement.playerPositionActive[actualPositionX, actualPositionY] = 0;
+            gridMovement.playerPosition[actualPositionX, actualPositionY] = null;
+            gameObject.transform.position = new Vector3(actualPositionX - (widht - 0.5f), (actualPositionY - 1) - (height - 0.5f));
+            actualPositionY -= 1;
+            gridMovement.playerPositionActive[actualPositionX, actualPositionY] = 1;
+            gridMovement.playerPosition[actualPositionX, actualPositionY] = this;
+        }
+
         //AddObject();
     }
+    /*
+    private void FixedUpdate()
+    {
+        rb.velocity = movementDirection;
+    }*/
 
     private void SetUpGridMovement()
     {
@@ -48,19 +91,15 @@ public class Player : CharacteP
         rows = height * 2;
 
         gridMovement.playerPosition = new Player[columns, rows];
+        gridMovement.playerPositionActive = new int[columns, rows];
 
-        for (int i = 0; i < columns; i++)
-        {
-            for (int j = 0; j < rows; j++)
-            {
-                gridMovement.playerPosition[i, j] = gameObject.GetComponent<Player>();
-            }
-        }
     }
 
     private void StartPosition()
     {
-
+        gridMovement.playerPosition[startPositionX, startPositionY] = this;
+        gridMovement.playerPositionActive[startPositionX, startPositionY] = 1;
+        gameObject.transform.position = new Vector3(startPositionX - (widht - 0.5f), startPositionY - (height - 0.5f));
     }
 
     /*public void OnCollisionEnter2D(Collision2D collision)
