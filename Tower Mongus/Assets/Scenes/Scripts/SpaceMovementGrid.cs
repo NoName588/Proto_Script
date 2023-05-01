@@ -17,7 +17,7 @@ public class SpaceMovementGrid : MonoBehaviour
     public GameObject playerT;
     public GameObject enemyT;
 
-    private GameObject objectT;
+    public GameObject objectT;
 
     public Player[,] playerPosition;
     public Enemy[,] enemyPosition;
@@ -126,21 +126,25 @@ public class SpaceMovementGrid : MonoBehaviour
 
             if (player.powerLvl >= enemy.powerLvl)
             {
-                Destroy(enemy.gameObject);
                 player.powerLvl+= enemy.powerLvl;
+                enemyPositionActive[positionX, positionY] = 0;
+                Destroy(enemy.gameObject);
+                Destroy(enemy);
             }
             else
             {
                 Destroy(player.gameObject);
+                Destroy(player);
             }
 
         }
 
         if (playerPositionActive[positionX, positionY] == objectPositionActive[positionX, positionY])
         {
-
-                player.powerLvl += objectP.powerLvl;
-           
+            player.powerLvl += objectP.powerLvl;
+            objectPositionActive[positionX, positionY] = 0;
+            Destroy(objectP.gameObject);
+            Destroy(objectP);
         }
 
     }

@@ -83,5 +83,7 @@ public class Enemy : CharacteP
         gridMovement.enemyPosition[startPositionX, startPositionY] = this;
         gridMovement.enemyPositionActive[startPositionX, startPositionY] = 1;
         gameObject.transform.position = new Vector3(startPositionX - (widht - 0.5f), startPositionY - (height - 0.5f));
+
+        Debug.Log($"Start position enemy in array {startPositionX} {startPositionY}");
     }
 }

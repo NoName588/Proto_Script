@@ -7,9 +7,9 @@ public class ObjectBonus : MonoBehaviour
     public int powerLvl;
 
 
-    private Player player;
+    //private Player player;
 
-    public GameObject playerGmObjct;
+    //public GameObject playerGmObjct;
 
     private int widht;
     private int height;
@@ -37,7 +37,7 @@ public class ObjectBonus : MonoBehaviour
 
     private void Awake()
     {
-        player = playerGmObjct.GetComponent<Player>();
+        //player = playerGmObjct.GetComponent<Player>();
     }
 
     // Update is called once per frame
@@ -85,5 +85,7 @@ public class ObjectBonus : MonoBehaviour
         gridMovement.objectPosition[startPositionX, startPositionY] = this;
         gridMovement.objectPositionActive[startPositionX, startPositionY] = 1;
         gameObject.transform.position = new Vector3(startPositionX - (widht - 0.5f), startPositionY - (height - 0.5f));
+
+        Debug.Log($"Start position object in array {startPositionX} {startPositionY}");
     }
 }

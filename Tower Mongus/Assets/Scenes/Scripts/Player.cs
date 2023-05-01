@@ -57,7 +57,7 @@ public class Player : CharacteP
                 futurePositionX -= 1;
             }
 
-            Debug.Log($"{futurePositionX}");
+            //Debug.Log($"{futurePositionX}");
 
             if (futurePositionX >= 0 && futurePositionX < 16 && futurePositionXN >= 0 && futurePositionXN < 16)
             {
@@ -67,7 +67,7 @@ public class Player : CharacteP
                 actualPositionX += 1;
                 gridMovement.playerPositionActive[actualPositionX, actualPositionY] = 1;
                 gridMovement.playerPosition[actualPositionX, actualPositionY] = this;
-                Debug.Log($"{actualPositionX}");
+                //Debug.Log($"{actualPositionX}");
             }
             
         }
@@ -82,7 +82,7 @@ public class Player : CharacteP
                 futurePositionY -= 1;
             }
 
-            Debug.Log($"{futurePositionY}");
+            //Debug.Log($"{futurePositionY}");
 
             if (futurePositionY >= 0 && futurePositionY < 8 && futurePositionYN >= 0 && futurePositionYN < 8)
             {
@@ -92,7 +92,7 @@ public class Player : CharacteP
                 actualPositionY += 1;
                 gridMovement.playerPositionActive[actualPositionX, actualPositionY] = 1;
                 gridMovement.playerPosition[actualPositionX, actualPositionY] = this;
-                Debug.Log($"{actualPositionY}");
+                //Debug.Log($"{actualPositionY}");
             }
                 
         }
@@ -103,7 +103,7 @@ public class Player : CharacteP
             futurePositionXN -= 1;
 
 
-            Debug.Log($"{futurePositionX}");
+            //Debug.Log($"{futurePositionX}");
 
             if (futurePositionX >= 0 && futurePositionX < 16 && futurePositionXN >= 0 && futurePositionXN < 16)
             {
@@ -113,7 +113,7 @@ public class Player : CharacteP
                 actualPositionX -= 1;
                 gridMovement.playerPositionActive[actualPositionX, actualPositionY] = 1;
                 gridMovement.playerPosition[actualPositionX, actualPositionY] = this;
-                Debug.Log($"{actualPositionX}");
+                //Debug.Log($"{actualPositionX}");
             }
                 
         }
@@ -124,7 +124,7 @@ public class Player : CharacteP
             futurePositionYN -= 1;
 
 
-            Debug.Log($"{futurePositionY}");
+            //Debug.Log($"{futurePositionY}");
 
             if (futurePositionY >= 0 && futurePositionY < 8 && futurePositionYN >= 0 && futurePositionYN < 8)
             {
@@ -134,13 +134,16 @@ public class Player : CharacteP
                 actualPositionY -= 1;
                 gridMovement.playerPositionActive[actualPositionX, actualPositionY] = 1;
                 gridMovement.playerPosition[actualPositionX, actualPositionY] = this;
-                Debug.Log($"{actualPositionY}");
+                //Debug.Log($"{actualPositionY}");
             }
                 
         }
 
         updatePositionX = actualPositionX; 
         updatePositionY = actualPositionY;
+
+        Debug.Log($"Position update player in array {actualPositionX} {actualPositionY}");
+
         //AddObject();
     }
     /*
@@ -167,6 +170,8 @@ public class Player : CharacteP
         gridMovement.playerPosition[startPositionX, startPositionY] = this;
         gridMovement.playerPositionActive[startPositionX, startPositionY] = 1;
         gameObject.transform.position = new Vector3(startPositionX - (widht - 0.5f), startPositionY - (height - 0.5f));
+        
+        Debug.Log($"Start position player in array {startPositionX} {startPositionY}");
     }
 
     /*public void OnCollisionEnter2D(Collision2D collision)
