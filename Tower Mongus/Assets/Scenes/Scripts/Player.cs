@@ -15,6 +15,10 @@ public class Player : CharacteP
     private int rows;
     private int actualPositionX;
     private int actualPositionY;
+    private int futurePositionX;
+    private int futurePositionY;
+    private int futurePositionXN;
+    private int futurePositionYN;
 
     private SpaceMovementGrid gridMovement;
     public GameObject spaceMovement;
@@ -32,46 +36,106 @@ public class Player : CharacteP
 
         actualPositionX = startPositionX;
         actualPositionY = startPositionY;
+
+        futurePositionX = startPositionX + 1;
+        futurePositionY = startPositionY + 1;
+        futurePositionXN = startPositionX - 1;
+        futurePositionYN = startPositionY - 1;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.D))    
+        if (Input.GetKeyDown(KeyCode.D))
         {
-            gridMovement.playerPositionActive[actualPositionX, actualPositionY] = 0;
-            gridMovement.playerPosition[actualPositionX, actualPositionY] = null;
-            gameObject.transform.position = new Vector3((actualPositionX + 1) - (widht - 0.5f), actualPositionY - (height - 0.5f));
-            actualPositionX += 1;
-            gridMovement.playerPositionActive[actualPositionX, actualPositionY] = 1;
-            gridMovement.playerPosition[actualPositionX, actualPositionY] = this;
+            futurePositionX += 1;
+            futurePositionXN += 1;
+
+            if (futurePositionX == 16)
+            {
+                futurePositionX -= 1;
+            }
+
+            Debug.Log($"{futurePositionX}");
+
+            if (futurePositionX >= 0 && futurePositionX < 16 && futurePositionXN >= 0 && futurePositionXN < 16)
+            {
+                gridMovement.playerPositionActive[actualPositionX, actualPositionY] = 0;
+                gridMovement.playerPosition[actualPositionX, actualPositionY] = null;
+                gameObject.transform.position = new Vector3((actualPositionX + 1) - (widht - 0.5f), actualPositionY - (height - 0.5f));
+                actualPositionX += 1;
+                gridMovement.playerPositionActive[actualPositionX, actualPositionY] = 1;
+                gridMovement.playerPosition[actualPositionX, actualPositionY] = this;
+                Debug.Log($"{actualPositionX}");
+            }
+            
         }
         else if (Input.GetKeyDown(KeyCode.W))
         {
-            gridMovement.playerPositionActive[actualPositionX, actualPositionY] = 0;
-            gridMovement.playerPosition[actualPositionX, actualPositionY] = null;
-            gameObject.transform.position = new Vector3(actualPositionX - (widht - 0.5f), (actualPositionY + 1) - (height - 0.5f));
-            actualPositionY += 1;
-            gridMovement.playerPositionActive[actualPositionX, actualPositionY] = 1;
-            gridMovement.playerPosition[actualPositionX, actualPositionY] = this;
+            
+            futurePositionY += 1;
+            futurePositionYN += 1;
+
+            if (futurePositionY == 8)
+            {
+                futurePositionY -= 1;
+            }
+
+            Debug.Log($"{futurePositionY}");
+
+            if (futurePositionY >= 0 && futurePositionY < 8 && futurePositionYN >= 0 && futurePositionYN < 8)
+            {
+                gridMovement.playerPositionActive[actualPositionX, actualPositionY] = 0;
+                gridMovement.playerPosition[actualPositionX, actualPositionY] = null;
+                gameObject.transform.position = new Vector3(actualPositionX - (widht - 0.5f), (actualPositionY + 1) - (height - 0.5f));
+                actualPositionY += 1;
+                gridMovement.playerPositionActive[actualPositionX, actualPositionY] = 1;
+                gridMovement.playerPosition[actualPositionX, actualPositionY] = this;
+                Debug.Log($"{actualPositionY}");
+            }
+                
         }
         else if (Input.GetKeyDown(KeyCode.A))
         {
-            gridMovement.playerPositionActive[actualPositionX, actualPositionY] = 0;
-            gridMovement.playerPosition[actualPositionX, actualPositionY] = null;
-            gameObject.transform.position = new Vector3((actualPositionX - 1) - (widht - 0.5f), actualPositionY - (height - 0.5f));
-            actualPositionX -= 1;
-            gridMovement.playerPositionActive[actualPositionX, actualPositionY] = 1;
-            gridMovement.playerPosition[actualPositionX, actualPositionY] = this;
+            
+            futurePositionX -= 1;
+            futurePositionXN -= 1;
+
+
+            Debug.Log($"{futurePositionX}");
+
+            if (futurePositionX >= 0 && futurePositionX < 16 && futurePositionXN >= 0 && futurePositionXN < 16)
+            {
+                gridMovement.playerPositionActive[actualPositionX, actualPositionY] = 0;
+                gridMovement.playerPosition[actualPositionX, actualPositionY] = null;
+                gameObject.transform.position = new Vector3((actualPositionX - 1) - (widht - 0.5f), actualPositionY - (height - 0.5f));
+                actualPositionX -= 1;
+                gridMovement.playerPositionActive[actualPositionX, actualPositionY] = 1;
+                gridMovement.playerPosition[actualPositionX, actualPositionY] = this;
+                Debug.Log($"{actualPositionX}");
+            }
+                
         }
         else if (Input.GetKeyDown(KeyCode.S))
         {
-            gridMovement.playerPositionActive[actualPositionX, actualPositionY] = 0;
-            gridMovement.playerPosition[actualPositionX, actualPositionY] = null;
-            gameObject.transform.position = new Vector3(actualPositionX - (widht - 0.5f), (actualPositionY - 1) - (height - 0.5f));
-            actualPositionY -= 1;
-            gridMovement.playerPositionActive[actualPositionX, actualPositionY] = 1;
-            gridMovement.playerPosition[actualPositionX, actualPositionY] = this;
+            
+            futurePositionY -= 1;
+            futurePositionYN -= 1;
+
+
+            Debug.Log($"{futurePositionY}");
+
+            if (futurePositionY >= 0 && futurePositionY < 8 && futurePositionYN >= 0 && futurePositionYN < 8)
+            {
+                gridMovement.playerPositionActive[actualPositionX, actualPositionY] = 0;
+                gridMovement.playerPosition[actualPositionX, actualPositionY] = null;
+                gameObject.transform.position = new Vector3(actualPositionX - (widht - 0.5f), (actualPositionY - 1) - (height - 0.5f));
+                actualPositionY -= 1;
+                gridMovement.playerPositionActive[actualPositionX, actualPositionY] = 1;
+                gridMovement.playerPosition[actualPositionX, actualPositionY] = this;
+                Debug.Log($"{actualPositionY}");
+            }
+                
         }
 
         //AddObject();
