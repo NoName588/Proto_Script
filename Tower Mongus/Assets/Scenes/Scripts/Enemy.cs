@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Enemy : CharacteP
@@ -8,11 +9,28 @@ public class Enemy : CharacteP
 
     public GameObject playerGmObjct;
 
+    private int widht;
+    private int height;
+    private int columns;
+    private int rows;
+
+    public int startPositionX;
+    public int startPositionY;
+
+    private int actualPositionX;
+    private int actualPositionY;
+   
+
+    private SpaceMovementGrid gridMovement;
+    public GameObject spaceMovement;
+
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        gridMovement = spaceMovement.GetComponent<SpaceMovementGrid>();
+        SetUpGridMovement();
+        StartPosition();
     }
 
     private void Awake()
@@ -26,15 +44,15 @@ public class Enemy : CharacteP
         
     }
 
-    public void OnCollisionEnter2D(Collision2D collision)
+   /* public void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
             CompareLvl();
         }
-    }
+    }*/
 
-    private void CompareLvl()
+    /*(private void CompareLvl()
     {
         if (powerLvl >= player.powerLvl)
         {
@@ -46,5 +64,24 @@ public class Enemy : CharacteP
             gameObject.SetActive(false);
             Destroy(gameObject);
         }
+    }*/
+
+    private void SetUpGridMovement()
+    {
+        height = (int)Camera.main.orthographicSize;
+        widht = height * (Screen.width / Screen.height);
+
+        columns = widht * 2;
+        rows = height * 2;
+
+        gridMovement.enemyPosition = new Enemy[columns, rows];
+        gridMovement.enemyPositionActive = new int[columns, rows];
+
+    }
+    private void StartPosition()
+    {
+        gridMovement.enemyPosition[startPositionX, startPositionY] = this;
+        gridMovement.enemyPositionActive[startPositionX, startPositionY] = 1;
+        gameObject.transform.position = new Vector3(startPositionX - (widht - 0.5f), startPositionY - (height - 0.5f));
     }
 }

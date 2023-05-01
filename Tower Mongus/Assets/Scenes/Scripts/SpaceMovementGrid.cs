@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UIElements;
 
 public class SpaceMovementGrid : MonoBehaviour
 {
@@ -9,18 +10,23 @@ public class SpaceMovementGrid : MonoBehaviour
 
     private Player player;
     private Enemy enemy;
+    
+
     private ObjectBonus objectP;
 
     public GameObject playerT;
     public GameObject enemyT;
+
     private GameObject objectT;
 
     public Player[,] playerPosition;
     public Enemy[,] enemyPosition;
+
     public ObjectBonus[,] objectPosition;
 
     public int[,] playerPositionActive;
     public int[,] enemyPositionActive;
+
     public int[,] objectPositionActive;
 
     public int[,] size;
@@ -30,10 +36,11 @@ public class SpaceMovementGrid : MonoBehaviour
     private int rows;
     private int room = 0;
 
-    // Start is called before the first frame update
+    
     void Start()
     {
         SetUpGrid();
+
     }
 
     private void Awake()
@@ -42,13 +49,16 @@ public class SpaceMovementGrid : MonoBehaviour
 
         player = playerT.GetComponent<Player>();
         enemy = enemyT.GetComponent<Enemy>();
+        objectP = objectT.GetComponent<ObjectBonus>();
+        
         //objectP = objectT.GetComponent<ObjectP>();
     }
 
-    // Update is called once per frame
+
     void Update()
     {
         RoomClear();
+        EntityPosition(player.updatePositionX, player.updatePositionY);
     }
 
     private void SetUpGrid()
@@ -108,22 +118,30 @@ public class SpaceMovementGrid : MonoBehaviour
             return false;
     }
 
-    private void EntityPosition(string entity, int positionX, int positionY)
+    private void EntityPosition(int positionX, int positionY)
     {
-        if (entity == "Player")
+        
+        if (playerPositionActive[positionX, positionY] == enemyPositionActive[positionX, positionY])
         {
-            playerPosition[positionX, positionY] = player;
-            size[positionX, positionY] = 1;
+
+            if (player.powerLvl >= enemy.powerLvl)
+            {
+                Destroy(enemy.gameObject);
+                player.powerLvl+= enemy.powerLvl;
+            }
+            else
+            {
+                Destroy(player.gameObject);
+            }
+
         }
-        else if (entity == "Enemy")
+
+        if (playerPositionActive[positionX, positionY] == objectPositionActive[positionX, positionY])
         {
-            enemyPosition[positionX, positionY] = enemy;
-            size[positionX, positionY] = 1;
+
+                player.powerLvl += objectP.powerLvl;
+           
         }
-        else if (entity == "Object")
-        {
-            objectPosition[positionX, positionY] = objectP;
-            size[positionX, positionY] = 1;
-        }
+
     }
 }

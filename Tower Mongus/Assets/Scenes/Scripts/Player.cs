@@ -7,6 +7,7 @@ public class Player : CharacteP
     //private ObjectBonus objectP;
     //private Enemy enemyP;
 
+    public int updatePositionX, updatePositionY;
     public int startPositionX;
     public int startPositionY;
     private int widht;
@@ -138,6 +139,8 @@ public class Player : CharacteP
                 
         }
 
+        updatePositionX = actualPositionX; 
+        updatePositionY = actualPositionY;
         //AddObject();
     }
     /*

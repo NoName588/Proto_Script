@@ -2,16 +2,22 @@ using UnityEngine;
 
 public class Colisionador : MonoBehaviour
 {
-    public int nivelDePoder;
+    public int powerLvl;
 
-    void OnTriggerEnter(Collider other)
+    void OnCollisionEnter(Collision collision)
     {
-        if (other.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Enemy") && powerLvl > collision.gameObject.GetComponent<Colisionador>().powerLvl)
         {
-            Debug.Log("Hola");
+            Destroy(collision.gameObject);
+            powerLvl++;
+        }
+        else if (collision.gameObject.CompareTag("Player") && powerLvl < collision.gameObject.GetComponent<Colisionador>().powerLvl)
+        {
+            Destroy(gameObject);
         }
     }
 }
+
 
 
 
