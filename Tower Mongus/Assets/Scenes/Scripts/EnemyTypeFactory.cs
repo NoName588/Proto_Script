@@ -29,8 +29,7 @@ public class EnemyTypeA : IEnemy
         {
             EnemyFactory factory = new EnemyTypeAFactory();
             IEnemy enemy = factory.CreateEnemy();
-            enemy.PowerLvl();
-            enemy.Attack();
+           
 
 
         }
