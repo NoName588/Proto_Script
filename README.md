@@ -13,6 +13,7 @@
 
 Link de ejecutable
 https://drive.google.com/drive/folders/1iMLkQ6OA9d02P2QJZwXQqohnDA-vs5nX?usp=sharing
+Movimiento: WASD dentro de juego, en menús es con mouse
 
 Cambios hechos al proyecto.
 - Cambios de logica en el Spaceship
