@@ -7,6 +7,7 @@ public class Pause : MonoBehaviour
 
     [SerializeField] private GameObject buttonPause;
     [SerializeField] private GameObject menuPause;
+    
 
     public void Start()
     {
@@ -38,6 +39,11 @@ public class Pause : MonoBehaviour
     {
         SceneManager.LoadScene(SampleScene);
 
+    }
+
+    public void ExitMainmenu()
+    {
+        SceneManager.LoadScene(0);
     }
 }
 

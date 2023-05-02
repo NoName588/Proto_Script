@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UIElements;
+using UnityEngine.SceneManagement;
 
 public class SpaceMovementGrid : MonoBehaviour
 {
@@ -36,11 +37,16 @@ public class SpaceMovementGrid : MonoBehaviour
     private int rows;
     private int room = 0;
 
-    
+    [Header("Game Over / You Win Screens")]
+    [SerializeField] private GameObject gameOverScreen;
+    [SerializeField] private GameObject youWinScreen;
+
+
     void Start()
     {
         SetUpGrid();
-
+        gameOverScreen.SetActive(false);
+        youWinScreen.SetActive(false);
     }
 
     private void Awake()
@@ -130,11 +136,13 @@ public class SpaceMovementGrid : MonoBehaviour
                 enemyPositionActive[positionX, positionY] = 0;
                 Destroy(enemy.gameObject);
                 Destroy(enemy);
+                YouWinScreenActive();
             }
             else
             {
                 Destroy(player.gameObject);
                 Destroy(player);
+                GameOverScreenActive();
             }
 
         }
@@ -147,5 +155,15 @@ public class SpaceMovementGrid : MonoBehaviour
             Destroy(objectP);
         }
 
+    }
+
+    public void YouWinScreenActive()
+    {
+        youWinScreen.SetActive(true);
+    }
+
+    public void GameOverScreenActive()
+    {
+        gameOverScreen.SetActive(true);
     }
 }
