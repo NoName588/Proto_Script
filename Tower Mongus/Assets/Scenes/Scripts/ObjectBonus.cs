@@ -85,6 +85,7 @@ public class ObjectBonus : MonoBehaviour
         gridMovement.objectPosition[startPositionX, startPositionY] = this;
         gridMovement.objectPositionActive[startPositionX, startPositionY] = 1;
         gameObject.transform.position = new Vector3(startPositionX - (widht - 0.5f), startPositionY - (height - 0.5f));
+        gridMovement.objects.Add(this);
 
         Debug.Log($"Start position object in array {startPositionX} {startPositionY}");
     }

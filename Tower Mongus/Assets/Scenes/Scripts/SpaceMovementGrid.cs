@@ -23,6 +23,9 @@ public class SpaceMovementGrid : MonoBehaviour
     public Player[,] playerPosition;
     public Enemy[,] enemyPosition;
 
+    public List<Enemy> enemies;
+    public List<ObjectBonus> objects;
+
     public ObjectBonus[,] objectPosition;
 
     public int[,] playerPositionActive;
@@ -36,6 +39,7 @@ public class SpaceMovementGrid : MonoBehaviour
     private int columns;
     private int rows;
     private int room = 0;
+    private bool allEnemyDefeated = false;
 
     [Header("Game Over / You Win Screens")]
     [SerializeField] private GameObject gameOverScreen;
@@ -64,11 +68,25 @@ public class SpaceMovementGrid : MonoBehaviour
     void Update()
     {
         RoomClear();
+        EnemysDefeated();
+
         if (player != null) {
             EntityPosition(player.updatePositionX, player.updatePositionY);
         }
-        
+
+        //PrintArray(enemyPositionActive);
     }
+    /*
+    private void PrintArray(int[,] matrix)
+    {
+        for (int i = 0; i < matrix.GetLength(0); i++)
+        {
+            for (int j = 0; j < matrix.GetLength(1); j++)
+            {
+                Debug.Log(matrix[i, j] + "\t");
+            }
+        }
+    }*/
 
     private void SetUpGrid()
     {
@@ -129,35 +147,67 @@ public class SpaceMovementGrid : MonoBehaviour
 
     private void EntityPosition(int positionX, int positionY)
     {
+        foreach(Enemy enemy in enemies)
+        {
+            //if (playerPositionActive[positionX, positionY] == enemyPositionActive[positionX, positionY])
+            if(enemy.startPositionX == positionX && enemy.startPositionY == positionY)
+            {
+                if (player.powerLvl >= enemy.powerLvl)
+                {
+                    //player.powerLvl += enemyPosition[positionX, positionY].powerLvl;
+                    player.powerLvl += enemy.powerLvl;  
+                    enemyPositionActive[positionX, positionY] = 0;
+                    enemies.Remove(enemy);
+                    //Destroy(enemyPosition[positionX, positionY].gameObject);
+                    //Destroy(enemyPosition[positionX, positionY]);
+                    Destroy(enemy.gameObject);
+                    Destroy(enemy);
+
+                    if (enemies.Count == 0)
+                    {
+                        YouWinScreenActive();
+                    }
+                }
+                else
+                {
+                    Destroy(player.gameObject);
+                    Destroy(player);
+                    GameOverScreenActive();
+                }
+
+            }
+        }
         
-        if (playerPositionActive[positionX, positionY] == enemyPositionActive[positionX, positionY])
+        foreach(ObjectBonus _object in objects)
         {
-
-            if (player.powerLvl >= enemy.powerLvl)
+            if (_object.startPositionX == positionX && _object.startPositionY == positionY)
             {
-                player.powerLvl+= enemy.powerLvl;
-                enemyPositionActive[positionX, positionY] = 0;
-                Destroy(enemy.gameObject);
-                Destroy(enemy);
-                YouWinScreenActive();
+                player.powerLvl += _object.powerLvl;
+                objectPositionActive[positionX, positionY] = 0;
+                objects.Remove(_object);
+                Destroy(_object.gameObject);
+                Destroy(_object);
             }
-            else
-            {
-                Destroy(player.gameObject);
-                Destroy(player);
-                GameOverScreenActive();
-            }
-
         }
 
-        if (playerPositionActive[positionX, positionY] == objectPositionActive[positionX, positionY])
-        {
-            player.powerLvl += objectP.powerLvl;
-            objectPositionActive[positionX, positionY] = 0;
-            Destroy(objectP.gameObject);
-            Destroy(objectP);
-        }
+    }
 
+    private void EnemysDefeated()
+    {
+        for (int i = 0; i < enemyPositionActive.GetLength(0); i++)
+        {
+            for (int j = 0; j < enemyPositionActive.GetLength(1); j++)
+            {
+                if (enemyPositionActive[i, j] == 1)
+                {
+                    allEnemyDefeated = false;
+                }/*
+                else
+                {
+                    allEnemyDefeated = true;
+                }*/
+            }
+        }
     }
 
     public void YouWinScreenActive()

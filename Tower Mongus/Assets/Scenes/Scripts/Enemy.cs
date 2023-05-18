@@ -41,7 +41,7 @@ public class Enemy : CharacteP
     // Update is called once per frame
     void Update()
     {
-        
+        Debug.Log($"Start position enemy in array {gridMovement.enemyPositionActive[startPositionX, startPositionY]}");
     }
 
    /* public void OnCollisionEnter2D(Collision2D collision)
@@ -83,6 +83,7 @@ public class Enemy : CharacteP
         gridMovement.enemyPosition[startPositionX, startPositionY] = this;
         gridMovement.enemyPositionActive[startPositionX, startPositionY] = 1;
         gameObject.transform.position = new Vector3(startPositionX - (widht - 0.5f), startPositionY - (height - 0.5f));
+        gridMovement.enemies.Add(this);
 
         Debug.Log($"Start position enemy in array {startPositionX} {startPositionY}");
     }

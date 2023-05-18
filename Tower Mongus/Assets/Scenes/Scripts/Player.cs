@@ -48,7 +48,7 @@ public class Player : CharacteP
 
         updatePositionX = actualPositionX;
         updatePositionY = actualPositionY;
-        Debug.Log($"Player's updated position in array: {actualPositionX} {actualPositionY}");
+        //Debug.Log($"Player's updated position in array: {actualPositionX} {actualPositionY}");
     }
 
     private void SetUpGridMovement()
