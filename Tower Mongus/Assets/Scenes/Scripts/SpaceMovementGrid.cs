@@ -64,7 +64,10 @@ public class SpaceMovementGrid : MonoBehaviour
     void Update()
     {
         RoomClear();
-        EntityPosition(player.updatePositionX, player.updatePositionY);
+        if (player != null) {
+            EntityPosition(player.updatePositionX, player.updatePositionY);
+        }
+        
     }
 
     private void SetUpGrid()

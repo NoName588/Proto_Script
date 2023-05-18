@@ -77,4 +77,14 @@ public class SpaceShip : MonoBehaviour
             size[positionX, positionY] = 1;
         }
     }
+
+    public void SetEnemyPositions(EnemyP[,] enemies)
+    {
+        enemyPosition = enemies;
+    }
+
+    public void SetObjectPositions(ObjectP[,] objects)
+    {
+        objectPosition = objects;
+    }
 }
