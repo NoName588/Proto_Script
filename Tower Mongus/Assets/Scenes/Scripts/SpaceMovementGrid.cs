@@ -5,6 +5,9 @@ using UnityEngine.EventSystems;
 using UnityEngine.UIElements;
 using UnityEngine.SceneManagement;
 
+using System.Linq;
+using System.Net.Http;
+
 public class SpaceMovementGrid : MonoBehaviour
 {
     public Sprite sprite;
@@ -147,7 +150,7 @@ public class SpaceMovementGrid : MonoBehaviour
 
     private void EntityPosition(int positionX, int positionY)
     {
-        foreach(Enemy enemy in enemies)
+        foreach(Enemy enemy in enemies.ToList())
         {
             //if (playerPositionActive[positionX, positionY] == enemyPositionActive[positionX, positionY])
             if(enemy.startPositionX == positionX && enemy.startPositionY == positionY)
@@ -178,7 +181,7 @@ public class SpaceMovementGrid : MonoBehaviour
             }
         }
         
-        foreach(ObjectBonus _object in objects)
+        foreach(ObjectBonus _object in objects.ToList())
         {
             if (_object.startPositionX == positionX && _object.startPositionY == positionY)
             {
