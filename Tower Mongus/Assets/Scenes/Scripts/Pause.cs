@@ -50,5 +50,10 @@ public class Pause : MonoBehaviour
     {
         SceneManager.LoadScene("Lvl2");
     }
+    
+    public void LoadLvl3()
+    {
+        SceneManager.LoadScene("Lvl3");
+    }
 }
 
