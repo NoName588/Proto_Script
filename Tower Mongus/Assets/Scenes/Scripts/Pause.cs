@@ -45,5 +45,10 @@ public class Pause : MonoBehaviour
     {
         SceneManager.LoadScene(0);
     }
+
+    public void LoadLvl2()
+    {
+        SceneManager.LoadScene("Lvl2");
+    }
 }
 

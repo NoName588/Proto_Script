@@ -107,9 +107,18 @@ public class SpaceMovementGrid : MonoBehaviour
             {
                 size[i, j] = Random.Range(0, 10);
                 SpawnTile(i, j);
+
+               /* if (Random.Range(0f, 1f) < 0.2f)
+                {
+                    SpawnEnemy(i, j);
+                }*/
             }
         }
+
+
     }
+
+    
 
     private void SpawnTile(int x, int y)
     {
@@ -122,6 +131,17 @@ public class SpaceMovementGrid : MonoBehaviour
 
         t.isTrigger = true;
     }
+
+   /* private void SpawnEnemy(int x, int y)
+    {
+        GameObject enemyObj = Instantiate(enemyT, new Vector3(x - (widht - 0.5f), y - (height - 0.5f)), Quaternion.identity);
+        Enemy enemy = enemyObj.GetComponent<Enemy>();
+        enemy.startPositionX = x;
+        enemy.startPositionY = y;
+
+        enemyPositionActive[x, y] = 1;
+        enemies.Add(enemy);
+    }*/
 
 
     /*
