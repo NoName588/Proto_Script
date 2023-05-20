@@ -1887,6 +1887,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3060152653735233607, guid: cf3964b171bf7ce47b46f95922c7e706, type: 3}
+      propertyPath: gridMovement
+      value: 
+      objectReference: {fileID: 2045273934}
+    - target: {fileID: 3060152653735233607, guid: cf3964b171bf7ce47b46f95922c7e706, type: 3}
       propertyPath: spaceMovement
       value: 
       objectReference: {fileID: 2045273933}
@@ -2925,6 +2929,10 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3054764481151342220, guid: 0d2ae32fb86461545a733c4c1decb5c9, type: 3}
+      propertyPath: gridMovement
+      value: 
+      objectReference: {fileID: 2045273934}
+    - target: {fileID: 3054764481151342220, guid: 0d2ae32fb86461545a733c4c1decb5c9, type: 3}
       propertyPath: playerGmObjct
       value: 
       objectReference: {fileID: 2012719126}
@@ -3598,6 +3606,10 @@ PrefabInstance:
       value: Zanihora
       objectReference: {fileID: 0}
     - target: {fileID: 3060152653735233607, guid: cf3964b171bf7ce47b46f95922c7e706, type: 3}
+      propertyPath: gridMovement
+      value: 
+      objectReference: {fileID: 2045273934}
+    - target: {fileID: 3060152653735233607, guid: cf3964b171bf7ce47b46f95922c7e706, type: 3}
       propertyPath: spaceMovement
       value: 
       objectReference: {fileID: 2045273933}
@@ -3614,6 +3626,10 @@ PrefabInstance:
       propertyPath: powerLvl
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 3054764481151342220, guid: 0d2ae32fb86461545a733c4c1decb5c9, type: 3}
+      propertyPath: gridMovement
+      value: 
+      objectReference: {fileID: 2045273934}
     - target: {fileID: 3054764481151342220, guid: 0d2ae32fb86461545a733c4c1decb5c9, type: 3}
       propertyPath: playerGmObjct
       value: 
@@ -3723,6 +3739,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9041159848608399266, guid: d384dc614ed99194fb29880634e18dcb, type: 3}
+      propertyPath: gridMovement
+      value: 
+      objectReference: {fileID: 2045273934}
     - target: {fileID: 9041159848608399266, guid: d384dc614ed99194fb29880634e18dcb, type: 3}
       propertyPath: spaceMovement
       value: 

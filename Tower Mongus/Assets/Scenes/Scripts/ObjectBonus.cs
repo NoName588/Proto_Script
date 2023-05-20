@@ -2,35 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ObjectBonus : MonoBehaviour
+public class ObjectBonus : Entity
 {
-    public int powerLvl;
-
-
-    //private Player player;
-
-    //public GameObject playerGmObjct;
-
-    private int widht;
-    private int height;
-    private int columns;
-    private int rows;
-
-    public int startPositionX;
-    public int startPositionY;
-
-    private int actualPositionX;
-    private int actualPositionY;
-
-
-    private SpaceMovementGrid gridMovement;
-    public GameObject spaceMovement;
-
-
     // Start is called before the first frame update
     void Start()
     {
-        gridMovement = spaceMovement.GetComponent<SpaceMovementGrid>();
         SetUpGridMovement();
         StartPosition();
     }
@@ -46,29 +22,7 @@ public class ObjectBonus : MonoBehaviour
 
     }
 
-    /* public void OnCollisionEnter2D(Collision2D collision)
-     {
-         if (collision.gameObject.CompareTag("Player"))
-         {
-             CompareLvl();
-         }
-     }*/
-
-    /*(private void CompareLvl()
-    {
-        if (powerLvl >= player.powerLvl)
-        {
-            playerGmObjct.SetActive(false);
-            Destroy(playerGmObjct);
-        }
-        else
-        {
-            gameObject.SetActive(false);
-            Destroy(gameObject);
-        }
-    }*/
-
-    private void SetUpGridMovement()
+    public override void SetUpGridMovement()
     {
         height = (int)Camera.main.orthographicSize;
         widht = height * (Screen.width / Screen.height);

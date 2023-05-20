@@ -101,21 +101,6 @@ public class SpaceMovementGrid : MonoBehaviour
 
         size = new int[columns, rows];
 
-        for (int i = 0; i < columns; i++)
-        {
-            for (int j = 0; j < rows; j++)
-            {
-                size[i, j] = Random.Range(0, 10);
-                SpawnTile(i, j);
-
-               /* if (Random.Range(0f, 1f) < 0.2f)
-                {
-                    SpawnEnemy(i, j);
-                }*/
-            }
-        }
-
-
     }
 
     
@@ -131,34 +116,6 @@ public class SpaceMovementGrid : MonoBehaviour
 
         t.isTrigger = true;
     }
-
-   /* private void SpawnEnemy(int x, int y)
-    {
-        GameObject enemyObj = Instantiate(enemyT, new Vector3(x - (widht - 0.5f), y - (height - 0.5f)), Quaternion.identity);
-        Enemy enemy = enemyObj.GetComponent<Enemy>();
-        enemy.startPositionX = x;
-        enemy.startPositionY = y;
-
-        enemyPositionActive[x, y] = 1;
-        enemies.Add(enemy);
-    }*/
-
-
-    /*
-    public void CreatingSize(int height, int widht)
-    {
-        size = new int[height, widht];
-        this.height = height;
-        this.widht = widht;
-
-        for (int i = 0; i < widht; i++)
-        {
-            for (int j = 0; j < height; j++)
-            {
-                size[i, j] = 0;
-            }
-        }
-    }*/
 
     public bool RoomClear()
     {
